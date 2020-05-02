@@ -7,6 +7,7 @@ const precedent = document.getElementById("precedent");
 const afficheResultat = document.getElementById("resultat");
 let progress = document.getElementById("file");
 let afficheNum = document.getElementById("afficheNum");
+let repeter = document.getElementById("repeter");
 var conter = 0;
 var resultat = [];
 let valeur = 1;
@@ -77,3 +78,36 @@ recuperation = () => {
     });
   }
 };
+///// affiche resultat ////
+afficheResultat.addEventListener("click", (e) => {
+  sect[1].classList.add("affiche");
+  sect[2].classList.remove("affiche");
+  e.preventDefault();
+  trireponces();
+  nombreDeFacteur();
+  Algorithme();
+});
+
+///// recommancer test /////
+repeter.addEventListener("click", (e) => {
+  sect[2].classList.add("affiche");
+  sect[1].classList.remove("affiche");
+  tabSymptome = [];
+  tabfacteurPronostique = [];
+  tabfacteurMineur = [];
+  tabfacteurMajeur = [];
+  resultSyptome = 0;
+  resultFacteurPronostique = 0;
+  resultfacteurMineur = 0;
+  resultfacteurMajeur = 0;
+  conter = 0;
+  valeur = 1;
+  suivant.classList.remove("affiche");
+  precedent.classList.add("affiche");
+  afficheResultat.classList.add("affiche");
+  question.innerHTML = questions[0];
+  inputs = document.querySelectorAll(".answer-inputs input");
+  progressBar(conter, valeur);
+  recuperation();
+  e.preventDefault();
+});
